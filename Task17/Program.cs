@@ -2,7 +2,12 @@
 Clear();
 
 Write("Введите номер четверти: ");
-int i = int.Parse(ReadLine()!);
+bool isParse=int.TryParse(ReadLine(),out int i);
+if(!isParse)
+{
+    WriteLine("Введено не число");
+    return;
+}
 
 switch(i)
 {
@@ -28,7 +33,7 @@ switch(i)
     }
     default:
     {
-        WriteLine("Ошибка");
+        WriteLine("Нет такой четверти");
         break;
     }
 }
