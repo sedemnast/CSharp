@@ -15,14 +15,14 @@ PrintArray(array);
 WriteLine();
 Diff(array);
 
-void Diff(double[] inArray)
+void Diff(double[] inArr)
 {
     double min = double.MaxValue;
     double max = double.MinValue;
-    for (int i = 0; i < inArray.Length; i++)
+    for (int i = 0; i < inArr.Length; i++)
     {
-        if (inArray[i] > max) max = inArray[i];
-        if (inArray[i] < min) min = inArray[i];
+        if (inArr[i] > max) max = inArr[i];
+        if (inArr[i] < min) min = inArr[i];
     }
     WriteLine($"Максимальный элемент = {max}");
     WriteLine($"Минимальный элемент = {min}");
