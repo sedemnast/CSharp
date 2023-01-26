@@ -25,3 +25,11 @@ string DecimalToBinary(int num)
     }
     return result;
 }
+
+// Лайфхак для перевода числа в нужную систему счисления:
+// using static System.Console;
+// Clear();
+
+// int a = 10;
+
+// WriteLine(Convert.ToString(a, 2));
