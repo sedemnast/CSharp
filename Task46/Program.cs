@@ -8,9 +8,26 @@ using static System.Console;
 
 Clear();
 Write("Введите размер матрицы и диапазон значений через пробел: ");
-string[] parameters = ReadLine()!.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+// Перевод массива параметров типа string в массив параметров типа int:
+// Было:
+// string[] parameters = ReadLine()!.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+// int[,] array = GetMatrixArray(int.Parse(parameters[0]), int.Parse(parameters[1]), int.Parse(parameters[2]), int.Parse(parameters[3]));
+// Стало:
 
-int[,] array = GetMatrixArray(int.Parse(parameters[0]), int.Parse(parameters[1]), int.Parse(parameters[2]), int.Parse(parameters[3]));
+// Вариант 1:
+// string[] parameters = ReadLine()!.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+// int[] intParams = Array.ConvertAll(parameters, Convert.ToInt32);
+// int[,] array = GetMatrixArray(intParams[0], intParams[1], intParams[2], intParams[3]);
+
+// Вариант 2:
+// string[] parameters = ReadLine()!.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+// int[] intParams = Array.ConvertAll(parameters, int.Parse);
+// int[,] array = GetMatrixArray(intParams[0], intParams[1], intParams[2], intParams[3]);
+
+// Вариант 3, не заводя переменную parameters:
+int[] intParams = Array.ConvertAll(ReadLine()!.Split(" ", StringSplitOptions.RemoveEmptyEntries), int.Parse);
+int[,] array = GetMatrixArray(intParams[0], intParams[1], intParams[2], intParams[3]);
+
 PrintMatrixArray(array);
 
 int[,] GetMatrixArray(int rows, int columns, int minValue, int maxValue)
